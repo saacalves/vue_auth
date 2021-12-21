@@ -27,6 +27,7 @@ const mutations = {
             state.times[index] = time;
         }
     },
+    //2X A MESMA COISA???
     setUser(state,user){
         SessionStorage.setObject('user', user);
         state.auth.user = user;
@@ -49,17 +50,21 @@ const actions = {
             context.commit('set-times', times);
         });
     },
-
+    //recebe os paramentos de user (email, password)
+    // OQUE É CONTEXT (ainda não entendi muito bem)????
     login(context, {email, password}){
-        
+        // OQUE É ACCESSTOKEN E PQ ELE RECEBE O EMAIL E SENHA????
         return JwtToken.accessToken(email, password)
             .then(response => {
+                // SETA O ESTADO DO USER COMO AUTENTICADO
                 context.commit('authenticated');
+                // SETA O SESSIONSTORAGE DO USER
                 context.dispatch('getUser');
             return response;
         })
     },
     
+    //explicar
     getUser(context){
         User.query().then(response => {
             context.commit('setUser', response.data.user);

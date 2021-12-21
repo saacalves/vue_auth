@@ -113,12 +113,15 @@
         methods: {
             login(){
               
-                // alert('Comunicando com o Servidor API....');
                 
+              // chamando method LOGIN no arquivo STORE com o parametro (this.user) passados no formulario (email, password)
+              // DISPATCH: forma de chamar methods da classe
                 store.dispatch('login', this.user)
+                //caso for retornado uma resposta com autorização vá para tela HOME
                     .then((response) => {
                         this.$router.push({name: 'dashboard'});
                     })
+                  //caso não haja resposta ou login não autorizado
                     .catch((responseError) => {
                         this.error.error = true;
                         if (responseError.status === 400) {

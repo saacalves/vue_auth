@@ -23,6 +23,7 @@ export default {
 
     //acesso ao token
     accessToken(email, password){
+        //Jtw é uma classe que faz o post para autenticação no back-end
         return Jwt.accessToken(email, password).then((response) => {
             this.token = response.data.token;
         });

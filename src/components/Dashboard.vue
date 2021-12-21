@@ -17,7 +17,7 @@ export default {
             }
     },
     computed: {
-        isEmail() {
+        isEmail() { //pegando informação (EMAIL) do usuário de sessão
             return store.state.auth.user.email
         }
     },
