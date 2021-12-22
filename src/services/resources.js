@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-// import AxiosPlugin from 'axios';
+//import AxiosPlugin from 'axios';
  
 // Vue.use(AxiosPlugin)
 
@@ -26,8 +26,7 @@ export class Jwt{
     }
 }
 
-//const Time = Vue.resource('http://localhost:3000/api/times');
-
+const Livro = Vue.resource('http://localhost:3000/livros');
 const User = Vue.resource('http://localhost:3000/users');
 
-export {Time, User};
+export {Livro, User};

@@ -18,7 +18,7 @@
     
     <div class="min-h-full">
         
-            <nav  v-if="isAuth"  class="bg-gray-800">
+            <nav  v-if="isAuth"  class="bg-teal-800">
                 <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
@@ -69,8 +69,8 @@
                             <!-- Active: "bg-gray-100", Not Active: "" -->
                             
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2"><router-link class="btn btn-primary" :to="{name: 'auth.logout'}">logout</router-link></a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Configurações</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2"><router-link class="btn btn-primary" :to="{name: 'auth.logout'}">Sair</router-link></a>
                             
                         </div>
                         </div>
@@ -155,7 +155,7 @@
                 <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-6 sm:px-0">
-                    <div class="border-4 border-gray-200 border-dashed rounded-lg h-96">
+                    <div class="">
                         <router-view> </router-view>
                     </div>
                 </div>
@@ -202,7 +202,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #553b3b;
   margin-top: 0px;
 }
 
