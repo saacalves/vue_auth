@@ -26,7 +26,22 @@ export class Jwt{
     }
 }
 
+export class createlivro{
+
+    static criarlivro(name, author, description){
+        return Vue.http.post('http://localhost:3000/livros', {
+            name,
+            author,
+            description
+        });
+    }
+    
+}
+
+const Livroid = Vue.resource(`http://localhost:3000/livros{/id}`);
 const Livro = Vue.resource('http://localhost:3000/livros');
+const Autor = Vue.resource('http://localhost:3000/autors');
 const User = Vue.resource('http://localhost:3000/users');
 
-export {Livro, User};
+
+export {Autor, Livro, User, Livroid};

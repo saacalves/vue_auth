@@ -119,7 +119,7 @@
                 store.dispatch('login', this.user)
                 //caso for retornado uma resposta com autorização vá para tela HOME
                     .then((response) => {
-                        this.$router.push({name: 'dashboard'});
+                        this.$router.push({name: 'pgtest'});
                     })
                   //caso não haja resposta ou login não autorizado
                     .catch((responseError) => {

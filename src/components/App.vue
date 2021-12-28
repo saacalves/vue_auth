@@ -30,9 +30,14 @@
                         <div class="flex items-baseline ml-10 space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <!-- <a href="#"  aria-current="page"></a> -->
-                            <router-link class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md" :to="{name: 'dashboard'}">Cadastro</router-link>
+                            <router-link class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" :to="{name: 'pgtest'}">MEUS LIVROS</router-link>
+
+                            <router-link class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" :to="{name: 'Cadautores'}">AUTORES</router-link>
+
+                            <router-link class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" :to="{name: 'dashboard'}">CADASTRAR LIVROS</router-link>
                             <!-- <router-link class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" :to="{name: 'auth.login'}">login</router-link> -->
-                            <router-link class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" :to="{name: 'pgtest'}">Estante</router-link>
+
+                            <router-link class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" :to="{name: 'autores'}">CADASTRAR AUTORES</router-link>
 
                         </div>
                     </div>

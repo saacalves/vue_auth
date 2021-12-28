@@ -9,6 +9,10 @@ import LoginComponent from './components/auth/Login.vue';
 import LogoutComponent from './components/auth/Logout.vue';
 import Pgtest from './components/Pgtest.vue';
 import Dashboard from './components/Dashboard.vue';
+import Autores from './components/autores.vue';
+import Cadautores from './components/Cadautores.vue';
+import Editarlivro from './components/editarlivro.vue';
+
 
 export default [
     {
@@ -25,14 +29,33 @@ export default [
     },
     {
         name: 'pgtest',
-        path: '/pg',
-        component : Pgtest,
+        path: '/meuslivros',
+        component: Pgtest,
         meta: {auth: true}
     },
     {
         name: 'dashboard',
-        path: '/dashboard',
-        component : Dashboard,
+        path: '/cadastrarlivros',
+        component: Dashboard,
+        meta: {auth: true}
+    },
+    {
+        name: 'autores',
+        path: '/cadastrarautores',
+        component: Autores,
+        meta: {auth: true}
+    },
+    {
+        name: 'Cadautores',
+        path: '/autores',
+        component: Cadautores,
+        meta: {auth: true}
+    },
+    {
+        name: 'editarlivro',
+        path: '/editarlivro',
+        component: Editarlivro,
         meta: {auth: true}
     }
+
 ];

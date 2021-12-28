@@ -1,41 +1,36 @@
 <template>
 <div>
-    Filtrar:<select v-model="selected" name="selected" id="selected" onchange="filtro()"> 
-                <option>Selecionar</option>
-                <option v-for="option in options" v-bind:key="option.id" :value="option.name"> 
-                    {{ option.name }}
-                </option>
-    </select>
-<h1>MEUS LIVROS</h1>
+Filtrar:<select v-model="selected" name="fil_autor" id="fil_autor" onchange="filtro()"> 
+            <option>Selecionar</option>
+            <option v-for="option in options" v-bind:key="option.id" :value="option.name"> 
+                {{ option.name }}
+            </option>
+</select>
+<h1>AUTORES</h1>
 <header class="bg-white shadow-xl ">
-    <div class="px-10 py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">    
+    <div class="px-10 py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">  
     <ul>
         <v-row>
-        <v-col v-for="livro in isLivros" v-bind:key="livro.id" cols="12" md="4" lg="2">
+            <v-col v-for="autor in isAutors" v-bind:key="autor.id" cols="12" md="4" lg="2">
             <v-card class="mx-auto">
                 <br/>
-                <v-card-title><p>{{livro.name}},</p></v-card-title>
-                <v-card-title><a>{{livro.author}},</a> <br/>
-                <h2>{{livro.description}}</h2><br/></v-card-title>
+                <v-card-title><p>{{autor.name}},</p></v-card-title>
+                <v-card-title><h2>{{autor.description}}</h2><br></v-card-title>
                 <v-card-actions>
-                    
                     <button class="bg-red-500 hover:bg-white-700 text-white font-bold py-2 px-4 border border-red-700 rounded">
-                    <v-btn text small color="primary" @click="deletelivro(livro.id)" value="Refresh Page"> Excluir </v-btn>
+                    <v-btn text small color="primary" @click="deleteautor(autor.id)"> Excluir </v-btn>
                     </button>
-                    <router-link v-bind:to="{ name: 'editarlivro', params: {id: livro.id} }">
                     <button class="bg-blue-500 hover:bg-white-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                    <v-btn text small color="primary"> Editar</v-btn>
+                    <v-btn text small color="primary" @click="updateautor(autor.id)"> Editar </v-btn>
                     </button>
-                    </router-link>
-
                     <br/>
                 </v-card-actions>
                 </v-card>
-        </v-col>
+            </v-col>
         </v-row> 
     </ul>
-    </div>
- </header>   
+</div>
+</header>
 </div>
 </template>
 
@@ -52,44 +47,51 @@ menuPerfil: false,
 },
 created(){
 if(this.isAuth) {
-    store.dispatch('load-livros');
+    store.dispatch('load-autors');
+
+
 }
 },
 computed: {
-isLivros(){
-return store.state.livros;
+isAutors(){
+return store.state.autors;
 },
 isAuth() {
 return store.state.auth.check;
 },
 },
 methods: {
-
 filtro(){
-
+    alert(this.fil_autor)
+    console.log(this.selected)
 },
-
 abrir() {
 this.menuPerfil = this.menuPerfil == false ? true : false;
 },
-         deletelivro(id){
-             if (confirm('Deseja excluir este livro?')){
-              const req = fetch(`http://localhost:3000/livros/${id}`,{
+         deleteautor(id){
+             if (confirm('Deseja excluir este Autor?')){
+              const req = fetch(`http://localhost:3000/autors/${id}`,{
                 method: "DELETE"
               });
                 window.location.reload()
              }
         },
-},
+        editarautor(id){
+             if (confirm('Deseja editar este Autor?')){
+              const req = fetch(`http://localhost:3000/autors/${id}`,{
+                method: "GET"
+              });
+   
+             }
+        },
+    },
 // User() {
 //     return User.get(id)
 // },
 // MethoddeTextoTeste() {
 //     return 'TESTE'
 // }
-
 }
-
 </script>
 
 <style scoped>
@@ -122,5 +124,6 @@ text-align: justify;
 .mx-auto{
     text-align: justify;
 }
+
 </style>
 

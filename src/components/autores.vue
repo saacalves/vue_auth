@@ -1,99 +1,96 @@
 <template>
 <div class="container" >
-  <a class="links" id="paracadastro"></a>
-  <a class="links" id="paralogin"></a>
-  
-  <div class="content">      
+    <a class="links" id="paracadastro"></a>
+    <a class="links" id="paralogin"></a>
+    
+    <div class="content">      
 
-    <!--FORMULÁRIO DE CADASTRO-->
-    <div id="cadastro">
-        <h1 class="mt-6 text-3xl font-extrabold text-center text-gray-900">CADASTRO DE LIVROS</h1>
-        </div> 
-        <div id="div">
-      <form @submit.prevent="savelivro()" method="post" action=""> 
-        <p> 
-          <label for="name">Nome</label>
-          <input id="name" name="name" required="required" type="text" placeholder="Revolução dos Bichos" v-model="createlivro.name"/>
-        </p>
-        
-        <p> 
-          <label for="author">Autor</label>
-          <input id="author" name="author" required="required" type="text" placeholder="George Orwell" v-model="createlivro.author"/> 
-        </p>
-        
-        <p> 
+      <!--FORMULÁRIO DE CADASTRO-->
+      <div id="cadastro">
+        <h1 class="mt-6 text-3xl font-extrabold text-center text-gray-900">CADASTRO DE AUTORES</h1>
+         </div>
+         <div id="div">
+        <form @submit.prevent="saveautor()" method="post" action=""> 
+          <p> 
+            <label for="name" class="mt-6 text-center text-gray-900">Nome</label>
+            <input id="name" name="name" required="required" type="text" placeholder="Revolução dos Bichos" v-model="createautor.name"/>
+          </p>
+          
+          <p> 
             <label for="description" class="mt-6 text-center text-gray-900">Descrição</label>
             <textarea id="description" name="description" required="required" type="text" rows="10" cols="47" placeholder="Uma das principais reflexões de 1984..." 
-            maxlength="400" v-model="createlivro.description"/>
+            maxlength="400" v-model="createautor.description"/>
           </p>
-        
-        <p> 
-          <input type="submit" value="Cadastrar"/> 
-        </p>
-      </form>
+          
+          <p> 
+            <input type="submit" value="Cadastrar"/> 
+          </p>
+        </form>
+        </div>
     </div>
-  </div>
-</div>
+  </div> 
 </template>
 
 <script>
 
 import store from '../store.js';
-import {Livro} from '../services/resources.js';
+import {Autor} from '../services/resources.js';
 
 export default {
-  
-  data () {
-      return {
-          menuPerfil: false,
-          createlivro: {
-            name: '',
-            author: '',
-            description: ''
-          },
-      }
-  },
-  computed: {
-      isEmail() { //pegando informação (EMAIL) do usuário de sessão
-          return store.state.auth.user.email
-      }
-  },
-  methods: {
-      abrir() {
-          this.menuPerfil = this.menuPerfil == false ? true : false;
-      },
-      // User() {
-      //     return User.get(id)
-      // },
-      // MethoddeTextoTeste() {
-      //     return 'TESTE'
-      // }
-  savelivro() { 
+    
+    data () {
+        return {
+            menuPerfil: false,
+            createautor: {
+              name: '',
+              description: ''
+            },
+        }
+    },
+    computed: {
+        isEmail() { //pegando informação (EMAIL) do usuário de sessão
+            return store.state.auth.user.email
+        }
+    },
+    methods: {
+        saveautor() { 
         var msg = '';
         
-        if ( this.createlivro.name == null) {
+        if ( this.createautor.name == null) {
           msg += "\n Voce deve informar um nome com pelo menos 2 carecteres ";
         }
         if (msg.length < 2) {
-        Livro.save({}, {livro: this.createlivro}).then(response => {
+        Autor.save({}, {autor: this.createautor}).then(response => {
           // success callback
-              console.log(this.createlivro) 
-              console.log("Criado com Sucesso!")          
+              console.log(this.createautor) 
+              console.log("Criado com Sucesso!")           
           }, response => {    
           // error callback
           });
           } else {
-          console.log("Falha ao Criar!")
+            console.log("Falha ao Criar!")
           alert(msg);
         }
-        // store.dispatch('savelivro', this.livro)
-        alert("Livro cadastrado com sucesso!")    
+        alert("Autor cadastrado com sucesso!")
         window.location.reload()
-        //this.$router.push({name: 'pgtest'});
-      },
-        
+        // store.dispatch('savelivro', this.livro)  
+        //this.$router.push({name: 'Cadautores'});
+        },
+
+        crateLivro(){
+            
+        },
+        abrir() {
+            this.menuPerfil = this.menuPerfil == false ? true : false;
+        },
+        // User() {
+        //     return User.get(id)
+        // },
+        // MethoddeTextoTeste() {
+        //     return 'TESTE'
+        // }
     }
-    
+  
 }
 </script>
 
